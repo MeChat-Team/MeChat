@@ -13,7 +13,7 @@ CHATGPT_PORT=9520
 CONFIG_FILE=docker-compose.yml
 
 # Welcome message
-echo -e "${green}欢迎使用99AI一键部署和升级脚本${plain}"
+echo -e "${green}欢迎使用MeChat一键部署和升级脚本${plain}"
 echo -e "${green}----------------------------------------${plain}"
 echo -e "${green}注意：${plain}"
 echo -e "${green}1. Node.js 部署方式需要提前安装好 MySQL 和 Redis。${plain}"
