@@ -9,15 +9,23 @@ COPY package*.json ./
 ENV NPM_CONFIG_LOGLEVEL=error
 ENV NODE_OPTIONS=--max-old-space-size=4096
 
-# 合并RUN命令，更新依赖，设置镜像源，安装依赖，然后清理
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-  npm config set registry https://registry.npmmirror.com && \
-  apk add --no-cache --virtual .build-deps git && \
-  npm install -g npm@latest && \
-  npm install --production --no-optional --legacy-peer-deps && \
-  npm cache clean --force && \
-  apk del .build-deps && \
-  rm -rf /var/cache/apk/* /tmp/*
+# 更新镜像源
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+# 设置 npm 镜像源
+RUN npm config set registry https://registry.npmmirror.com
+
+# 安装必要的构建依赖
+RUN apk add --no-cache --virtual .build-deps git
+
+# 更新 npm 到最新版本
+RUN npm install -g npm@latest
+
+# 安装项目依赖
+RUN npm install --production --no-optional --legacy-peer-deps
+
+# 清理缓存和临时文件
+RUN npm cache clean --force && apk del .build-deps && rm -rf /var/cache/apk/* /tmp/*
 
 # 运行阶段
 FROM node:20.14.0-alpine AS runner
@@ -27,6 +35,7 @@ ENV TZ="Asia/Shanghai" \
 
 WORKDIR /app
 
+# 从构建阶段复制 node_modules
 COPY --from=build /app/node_modules ./node_modules
 COPY . .
 
