@@ -1,5 +1,5 @@
 # 编译阶段
-FROM node:20.14.0-alpine AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -8,7 +8,12 @@ COPY package*.json ./
 # 设置环境变量来忽略一些警告
 ENV NPM_CONFIG_LOGLEVEL=error
 ENV NODE_OPTIONS=--max-old-space-size=4096
-RUN node -v && npm -v && echo "Network check complete"
+
+# 更新镜像源
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
+# 设置 npm 镜像源
+RUN npm config set registry https://registry.npmmirror.com
 
 # 安装必要的构建依赖
 RUN apk add --no-cache --virtual .build-deps git
