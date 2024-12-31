@@ -29,7 +29,7 @@ services:
     volumes:
       - ./data/redis/:/data/
 
-  Mechat:
+  mechat:
     build: ./
     container_name: mechat
     restart: always
