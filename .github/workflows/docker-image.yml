@@ -1,5 +1,5 @@
 name: Build and Push Docker Image
-environment: DockerHub
+
 
 
 on:
@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: DockerHub
 
     steps:
       - name: Checkout repository
