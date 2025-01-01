@@ -37,6 +37,7 @@ services:
       - "9520:9520"
     volumes:
       - ./.env.docker:/app/.env
+      - ./public/file:/app/public/file
     environment:
       - TZ=Asia/Shanghai
     depends_on:
