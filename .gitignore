@@ -3,3 +3,5 @@ node_modules
 swagger-spec.json
 public/file
 pnpm-lock.yaml
+.DS_Store
+
