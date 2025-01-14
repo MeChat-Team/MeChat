@@ -1,0 +1,1 @@
+import{I as i}from"./index-e53e2518.js";import{W as t}from"./vue-cbfd7fa1.js";const r=i("left",!0,function(e){return t("svg",{width:e.size,height:e.size,viewBox:"0 0 48 48",fill:"none"},[t("path",{d:"M31 36L19 24L31 12",stroke:e.colors[0],"stroke-width":e.strokeWidth,"stroke-linecap":e.strokeLinecap,"stroke-linejoin":e.strokeLinejoin},null)])});export{r as L};
