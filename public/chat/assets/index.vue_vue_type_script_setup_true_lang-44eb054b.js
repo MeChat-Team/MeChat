@@ -1,0 +1,1 @@
+import{I as t}from"./index-8a5a92e3.js";import{k as n,ah as a,c,V as r,s as i,L as p,S as m}from"./vue-edf88119.js";const f=n({__name:"index",props:{icon:{}},setup(l){const s=a(),e=c(()=>({class:s.class||"",style:s.style||"width: 1em, height: 1em"}));return(o,u)=>(m(),r(p(t),i({icon:o.icon},e.value),null,16,["icon"]))}});export{f as _};
